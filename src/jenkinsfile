@@ -22,8 +22,7 @@ pipeline {
                 body: "Something is wrong with ${env.BUILD_URL}"
             }
             success {
-                echo 'post success !!!',
-                body: "Good --> with ${env.BUILD_URL}
+                echo 'post success !!!'
             }
         }
 }
