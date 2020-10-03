@@ -2,9 +2,13 @@ pipeline {
     agent any
 
     options {
-        buildDiscarder(logRotator(numToKeepStr: '10')),
-        checkoutToSubdirectory('subdir'),
-        disableConcurrentBuilds() //同一个pipeline，Jenkins默认是可以同时执行多次的，如图3-2所示。此选项是为了禁止pipeline同时执行
+        buildDiscarder(logRotator(numToKeepStr: '10'))
+    }
+    options {
+            checkoutToSubdirectory('subdir')
+    }
+    options {
+            disableConcurrentBuilds() //同一个pipeline，Jenkins默认是可以同时执行多次的，如图3-2所示。此选项是为了禁止pipeline同时执行
     }
 
     stages {
