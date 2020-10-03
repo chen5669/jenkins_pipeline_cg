@@ -12,6 +12,11 @@ pipeline {
                 echo 'printenv'
             }
         }
+        stage('Test') {
+            steps {
+                echo "Running on ${env.BUILD_NUMBER} on ${env.JENKINS_URL}"
+            }
+        }
     }
     post {
             always {
