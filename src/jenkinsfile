@@ -15,7 +15,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Running on ${env.BUILD_NUMBER} on ${env.JENKINS_URL}",
-                echo "git_branch:---->{env.GIT_BRANCH}",
+                echo "git_branch:---->${env.GIT_BRANCH}",
                 echo "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input",
                 echo "Please go to ${BUILD_URL} and verify the build"
 
