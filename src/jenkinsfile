@@ -5,7 +5,26 @@ pipeline {
         stage('Hello') {
             steps {
                 echo 'Hello World'
+                echo 'printenv'
             }
         }
     }
+    post {
+            always {
+                echo 'I will always say Hello!'
+            }
+            aborted {
+                echo 'I was aborted'
+            }
+            failure {
+                mail to: 'cgsnd5669@163.com',
+                subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+                body: "Something is wrong with ${env.BUILD_URL}"
+            }
+            success {
+                mail to: 'cgsnd5669@163.com',
+                subject: "Successed Pipeline",
+                body: "Good --> with ${env.BUILD_URL}"
+            }
+        }
 }
