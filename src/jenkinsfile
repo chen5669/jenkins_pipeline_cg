@@ -5,6 +5,10 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '10'))
     }
 
+    environment {
+        Author = "chenguang09"
+    }
+
     stages {
         stage('Hello') {
             steps {
@@ -18,6 +22,7 @@ pipeline {
                 echo "git branch is ${env.GIT_BRANCH}"
                 echo "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input"
                 echo "Please go to ${BUILD_URL} and verify the build"
+                echo "The author is ${Author}"
 
             }
         }
@@ -25,6 +30,7 @@ pipeline {
     post {
             always {
                 echo 'I will always say Hello!'
+                echo "The author is ${Author}"
             }
             aborted {
                 echo 'I was aborted'
