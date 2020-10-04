@@ -4,7 +4,8 @@ pipeline {
     options {
         buildDiscarder(logRotator(numToKeepStr: '10'))
     }
-
+    //1.自定义pipeline 环境变量
+    //2. 环境变量间相互引用
     environment {
         __Author = "chenguang09"
         __Server_Name = "Jenkins pipeline!!!!!!"
@@ -26,6 +27,7 @@ pipeline {
                 echo "Please go to ${BUILD_URL} and verify the build"
                 echo "The author is ${__Author}"
                 echo "${__Merge}"
+                echo "自定义全局环境变量名称: ${env.g_name}, 值为: ${env.g_value}"
 
             }
         }
