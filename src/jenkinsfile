@@ -27,7 +27,7 @@ pipeline {
                 echo "Please go to ${BUILD_URL} and verify the build"
                 echo "The author is ${__Author}"
                 echo "${__Merge}"
-                echo "自定义全局环境变量名称: ${env.g_name}, 值为: ${env.g_value}"
+                echo "自定义全局环境变量g_name: ${env.g_name}"
 
             }
         }
