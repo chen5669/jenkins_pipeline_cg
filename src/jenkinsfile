@@ -6,7 +6,9 @@ pipeline {
     }
 
     environment {
-        Author = "chenguang09"
+        __Author = "chenguang09"
+        __Server_Name = "Jenkins pipeline!!!!!!"
+        __Merge = "service name ${__Server_Name} By ${__Author}"
     }
 
     stages {
@@ -22,7 +24,7 @@ pipeline {
                 echo "git branch is ${env.GIT_BRANCH}"
                 echo "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input"
                 echo "Please go to ${BUILD_URL} and verify the build"
-                echo "The author is ${Author}"
+                echo "The author is ${__Author}"
 
             }
         }
