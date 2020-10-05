@@ -19,6 +19,13 @@ pipeline {
                 sh'printenv'
             }
         }
+
+        stage('pmd') {
+            steps {
+                sh 'mvn pmd:pmd'
+             }
+
+        }
         stage('Test') {
             steps {
                 echo "Running on ${env.BUILD_NUMBER} on ${env.JENKINS_URL}"
@@ -36,6 +43,7 @@ pipeline {
             always {
                 echo 'I will always say Hello!'
                 echo "The author is ${__Author}"
+                pmd(canRunOnFailed: true, pattern: '**/target/pmd.xml')
             }
             aborted {
                 echo 'I was aborted'
