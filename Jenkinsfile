@@ -1,6 +1,9 @@
 pipeline {
     agent any
     //jenkins pipeline triggers cron 每两份中触发一次
+    tools {
+        jdk 'jdk8'
+    }
     triggers{
         //cron('H/2 * * * *')
         //每分钟判断一次代码仓库是否有变化
@@ -16,9 +19,16 @@ pipeline {
         __Author = "chenguang09"
         __Server_Name = "Jenkins pipeline!!!!!!"
         __Merge = "service name ${__Server_Name} By ${__Author}"
+        __Java_Version = ""
     }
 
     stages {
+        stage('Example') {
+                steps {
+                    sh 'java -version'
+                    echo "java -version"
+                }
+        }
         stage('Hello') {
             steps {
                 echo 'Hello World'
