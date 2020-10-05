@@ -20,12 +20,17 @@ pipeline {
             }
         }
 
-        stage('pmd') {
-            steps {
-                sh 'mvn pmd:pmd'
-             }
+        stage('更新拉取最新代码') {
+              steps {
+                git branch: "master", url: 'https://github.com/chen5669/jenkins_maven_pipeline.git/'
+              }
+            }
 
-        }
+        //stage('pmd') {
+        //    steps {
+        //        sh "mvn pmd:pmd"
+        //     }
+        //}
         stage('Test') {
             steps {
                 echo "Running on ${env.BUILD_NUMBER} on ${env.JENKINS_URL}"
@@ -49,9 +54,10 @@ pipeline {
                 echo 'I was aborted'
             }
             failure {
-                mail to: 'cgsnd5669@163.com',
-                subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-                body: "Something is wrong with ${env.BUILD_URL}"
+                //mail to: 'cgsnd5669@163.com',
+                //subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+                //body: "Something is wrong with ${env.BUILD_URL}"
+                echo 'post failure !!!'
             }
             success {
                 echo 'post success !!!'
