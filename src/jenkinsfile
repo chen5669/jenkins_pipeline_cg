@@ -1,8 +1,10 @@
 pipeline {
     agent any
-
+    //jenkins pipeline triggers cron 每两份中触发一次
     triggers{
-        cron('H/2 * * * *')
+        //cron('H/2 * * * *')
+        //每分钟判断一次代码仓库是否有变化
+        pollSCM('H/1 * * * *')
     }
 
     options {
