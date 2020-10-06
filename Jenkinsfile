@@ -23,7 +23,8 @@ pipeline {
         string(name:'warLocation', defaultValue: 'gameoflife-web/target/*.war', description: 'war包的相对路径 ')
 
         //服务器参数采用了组合方式，避免多次选择，使用docker为更佳实践【参数值对外隐藏】
-        choice(name: 'server',choices:'192.168.0.115,8090,*****,*****', description: '测试服务器列表选择(IP,Port,Name,Passwd)')
+        choice(name: 'env',choices:['192.168.0.115,8090','test','stage','prod'], description: '选择部署环境')
+
         //测试服务器的dubbo服务端口
         string(name:'dubboPort', defaultValue: '31100', description: '测试服务器的dubbo服务端口')
         //单元测试代码覆盖率要求，各项目视要求调整参数
