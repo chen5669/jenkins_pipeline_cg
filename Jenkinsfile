@@ -96,7 +96,7 @@ pipeline {
 
         stage('build') {
                     steps {
-                        echo "Build Version is ${env.BUILD_NUMBER_VERSION}"
+                        echo "Build Version is ${__version}"
 
 
                     }
