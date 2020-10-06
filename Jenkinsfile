@@ -129,5 +129,5 @@ def isEmpty(val) {
 }
 
 def createVersion(String BUILD_NUMBER_VERSION) {
-    return new Date().format('yyMM') + "-${BUILD_NUMBER_Version}"
+    return new Date().format('yyMM') + "-${BUILD_NUMBER_VERSION}"
 }
