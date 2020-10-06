@@ -48,6 +48,7 @@ pipeline {
         __Server_Name = "Jenkins pipeline!!!!!!"
         __Merge = "service name ${__Server_Name} By ${__Author}"
         __Java_Version = ""
+        __version = createVersion(BUILD_NUMBER_VERSION)
     }
 
     stages {
@@ -82,7 +83,7 @@ pipeline {
         //}
         stage('Test') {
             steps {
-                echo "Running on ${env.BUILD_NUMBER} on ${env.JENKINS_URL}"
+                echo "Running on ${__version} on ${env.JENKINS_URL}"
                 echo "git branch is ${env.GIT_BRANCH}"
                 echo "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input"
                 echo "Please go to ${BUILD_URL} and verify the build"
@@ -92,6 +93,14 @@ pipeline {
 
             }
         }
+
+        stage('build') {
+                    steps {
+                        echo "Build Version is ${env.BUILD_NUMBER_VERSION}"
+
+
+                    }
+                }
     }
     post {
             always {
@@ -112,4 +121,13 @@ pipeline {
                 echo 'post success !!!'
             }
         }
+}
+
+//////////////////   util ////////////////////////
+def isEmpty(val) {
+    return val == null || val == "" || "${val}" == "null" || "${val}".trim().length() == 0
+}
+
+def createVersion(String BUILD_NUMBER_VERSION) {
+    return new Date().format('yyMM') + "-${BUILD_NUMBER_Version}"
 }
