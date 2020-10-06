@@ -48,7 +48,7 @@ pipeline {
         __Server_Name = "Jenkins pipeline!!!!!!"
         __Merge = "service name ${__Server_Name} By ${__Author}"
         __Java_Version = ""
-        __version = createVersion(BUILD_NUMBER_VERSION)
+        __version = createVersion(BUILD_NUMBER)
     }
 
     stages {
@@ -128,6 +128,6 @@ def isEmpty(val) {
     return val == null || val == "" || "${val}" == "null" || "${val}".trim().length() == 0
 }
 
-def createVersion(String BUILD_NUMBER_VERSION) {
-    return new Date().format('yyMM') + "-${BUILD_NUMBER_VERSION}"
+def createVersion(String BUILD_NUMBER) {
+    return new Date().format('yyMM') + "-${BUILD_NUMBER}"
 }
