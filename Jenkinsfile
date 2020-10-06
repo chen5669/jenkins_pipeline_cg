@@ -5,12 +5,11 @@ pipeline {
         jdk 'jdk8'
     }
     triggers{
-        //cron('H/2 * * * *')
-        //每分钟判断一次代码仓库是否有变化
+//         cron('H/2 * * * *')
+//         每分钟判断一次代码仓库是否有变化
         pollSCM('H/1 * * * *')
-        //定期检查开发代码更新，工作日每晚4点做daily build
-        pollSCM('H 4 * * 1-5')
-
+//         定期检查开发代码更新，工作日每晚4点做daily build
+//         pollSCM('H 4 * * 1-5')
     }
 
     parameters {
