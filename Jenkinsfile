@@ -3,7 +3,7 @@ pipeline {
     //jenkins pipeline triggers cron 每两份中触发一次
     tools {
         jdk 'jdk8'
-        mvn 'M2'
+        maven 'M2'
     }
     triggers{
 //         cron('H/2 * * * *')
