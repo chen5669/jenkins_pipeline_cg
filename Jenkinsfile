@@ -3,6 +3,7 @@ pipeline {
     //jenkins pipeline triggers cron 每两份中触发一次
     tools {
         jdk 'jdk8'
+        mvn 'M2'
     }
     triggers{
 //         cron('H/2 * * * *')
@@ -11,6 +12,10 @@ pipeline {
 //         定期检查开发代码更新，工作日每晚4点做daily build
 //         pollSCM('H 4 * * 1-5')
     }
+
+    configFileProvider([configFile(fileId: 'maven-global-settings', variable: 'MAVEN_SETTINGS')]) {
+                    sh 'mvn -s $MAVEN_SETTINGS clean package'
+                }
 
     parameters {
         //git代码路径【参数值对外隐藏】
