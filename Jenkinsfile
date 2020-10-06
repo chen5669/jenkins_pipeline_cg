@@ -67,7 +67,8 @@ pipeline {
         stage('更新拉取最新代码') {
               steps {
                 git branch: "master", url: 'https://github.com/chen5669/jenkins_maven_pipeline.git/'
-                configFileProvider([configFile(fileId: 'maven-global-settings', variable: 'MAVEN_SETTINGS')]) {
+                configFileProvider([configFile(fileId: 'maven-global-settings', variable: 'MAVEN_SETTINGS',targetLocation: "settings.xml")]) {
+                                                  echo "cat settings.xml"
                                                   sh 'mvn -s $MAVEN_SETTINGS clean package'
                                               }
               }
