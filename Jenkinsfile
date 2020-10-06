@@ -13,9 +13,7 @@ pipeline {
 //         pollSCM('H 4 * * 1-5')
     }
 
-    configFileProvider([configFile(fileId: 'maven-global-settings', variable: 'MAVEN_SETTINGS')]) {
-                    sh 'mvn -s $MAVEN_SETTINGS clean package'
-                }
+
 
     parameters {
         //git代码路径【参数值对外隐藏】
@@ -70,6 +68,9 @@ pipeline {
               steps {
                 git branch: "master", url: 'https://github.com/chen5669/jenkins_maven_pipeline.git/'
               }
+              configFileProvider([configFile(fileId: 'maven-global-settings', variable: 'MAVEN_SETTINGS')]) {
+                                  sh 'mvn -s $MAVEN_SETTINGS clean package'
+                              }
             }
 
         //stage('pmd') {
